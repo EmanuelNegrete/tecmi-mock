@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mercado Pago – Landing de Captación (Mock Académico)</title>
+  <meta name="description" content="Landing page de captación de usuarios para Mercado Pago (mock académico)." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary:#FFD600; /* amarillo principal */
+      --primary-600:#e6c200;
+      --dark:#0B1B2B;
+      --text:#203040;
+      --muted:#6b7a90;
+      --bg:#fffdf5;
+      --card:#ffffff;
+      --ring:rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";color:var(--text);background:var(--bg)}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:1120px;margin:0 auto;padding:0 20px}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--primary);color:#000;border:none;border-radius:12px;padding:14px 18px;font-weight:600;cursor:pointer;box-shadow:0 8px 24px rgba(255,214,0,.25);transition:.2s}
+    .btn:hover{background:var(--primary-600);transform:translateY(-1px)}
+    .btn.secondary{background:#0ea5e9;box-shadow:0 8px 24px rgba(14,165,233,.25);color:#fff}
+    .badge{display:inline-block;font-size:.75rem;font-weight:600;color:#8a7800;background:#fff7cc;border:1px solid #ffe066;border-radius:999px;padding:6px 10px}
+    header{position:sticky;top:0;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid #f0eac2;z-index:20}
+    header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+    header nav{display:flex;gap:18px}
+    header .logo{display:flex;align-items:center;gap:.6rem;font-weight:800;color:var(--dark)}
+    header .logo .mark{width:28px;height:28px;background:var(--primary);border-radius:8px;display:grid;place-items:center;color:#000;font-weight:800}
+    /* HERO */
+    .hero{padding:64px 0 24px;background:radial-gradient(1200px 420px at 60% -10%, rgba(255,214,0,.12), transparent),linear-gradient(180deg,#fff, #fffbe6)}
+    .hero .grid{display:grid;grid-template-columns:1.15fr 1fr;gap:40px;align-items:center}
+    .hero h1{font-size:clamp(2rem, 3.6vw, 3rem);line-height:1.1;margin:.4rem 0;color:var(--dark)}
+    .hero p{font-size:1.05rem;color:#435267;max-width:50ch}
+    .hero .ctaRow{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .phoneMock{position:relative;aspect-ratio:9/19;border:10px solid #111;border-radius:30px;overflow:hidden;background:#fff;box-shadow:0 24px 60px rgba(9,24,45,.25)}
+    .phoneStatus{height:28px;background:#0b1b2b}
+    .qr{display:grid;place-items:center;height:calc(100% - 28px);padding:24px}
+    .qr .tile{background:conic-gradient(from 0deg, #000 0 25%, #fff 0 50%, #000 0 75%, #fff 0);background-size:16px 16px;width:64px;height:64px;border-radius:6px}
+    .trust{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:18px;color:var(--muted);font-size:.9rem}
+    .trust .pill{background:#fff;border:1px solid #ffe066;border-radius:999px;padding:6px 10px}
+    /* BENEFICIOS */
+    .section{padding:64px 0}
+    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .card{background:var(--card);padding:22px;border-radius:16px;border:1px solid #f0eac2;box-shadow:0 6px 18px var(--ring)}
+    .card h3{margin:.2rem 0 .35rem 0;font-size:1.05rem}
+    .card p{color:var(--muted);font-size:.96rem}
+    .icon{width:42px;height:42px;border-radius:12px;background:#fffbea;display:grid;place-items:center;font-weight:800;color:#d4af00;margin-bottom:8px}
+    /* CÓMO FUNCIONA */
+    .how{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .step{background:var(--card);padding:24px;border:1px solid #f0eac2;border-radius:16px;box-shadow:0 6px 18px var(--ring)}
+    .step .n{width:36px;height:36px;border-radius:12px;background:#fff7cc;color:#8a7800;display:grid;place-items:center;font-weight:800;margin-bottom:10px}
+    /* TESTIMONIOS */
+    .testis{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .quote{background:var(--card);padding:24px;border-radius:16px;border:1px solid #f0eac2;box-shadow:0 6px 18px var(--ring);position:relative}
+    .quote::before{content:'“';position:absolute;left:14px;top:-14px;font-size:64px;color:#f9f4d6}
+    .user{display:flex;align-items:center;gap:12px;margin-top:12px}
+    .avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#f8e98a,#fff5c4)}
+    /* CTA FINAL */
+    .cta{background:linear-gradient(180deg,#ffd600,#e6c200);color:#000;border-radius:20px;padding:28px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .cta p{color:#332d00;margin:0}
+    footer{padding:32px 0;color:#7f8aa3}
+    footer a{color:#7f8aa3;text-decoration:underline}
+    /* RESPONSIVE */
+    @media (max-width:1000px){.hero .grid{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,1fr)}.how{grid-template-columns:1fr 1fr}.testis{grid-template-columns:1fr}}
+    @media (max-width:640px){.cards{grid-template-columns:1fr}.how{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container wrap">
+      <div class="logo"><span class="mark">MP</span> Mercado Pago · Mock</div>
+      <nav>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#como">Cómo funciona</a>
+        <a href="#descarga">Descargar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container grid">
+        <div>
+          <span class="badge">Mock académico – Página de aterrizaje</span>
+          <h1>Paga fácil, seguro y desde tu celular</h1>
+          <p>Desde el Oxxo hasta tu tienda en línea favorita. Con la app de Mercado Pago paga con tarjeta, SPEI, efectivo o QR. Todo en un mismo lugar.</p>
+          <div class="ctaRow">
+            <a class="btn" href="#descarga">Crea tu cuenta gratis</a>
+            <a class="btn secondary" href="#como">Ver cómo funciona</a>
+          </div>
+          <div class="trust">
+            <span>Confían en nosotros</span>
+            <span class="pill">Bancos aliados</span>
+            <span class="pill">Tiendas participantes</span>
+            <span class="pill">Cifrado SSL</span>
+          </div>
+        </div>
+        <div aria-hidden="true">
+          <div class="phoneMock" role="img" aria-label="Teléfono con QR">
+            <div class="phoneStatus"></div>
+            <div class="qr">
+              <div class="tile" title="QR ilustrativo"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section id="beneficios" class="section">
+      <div class="container">
+        <h2 style="margin-top:0">Beneficios clave</h2>
+        <p style="color:var(--muted);max-width:65ch">Lo importante en una landing es comunicar <strong>claramente</strong> el valor. Aquí listamos cuatro beneficios con texto breve y directo al punto.</p>
+        <div class="cards" aria-label="Beneficios">
+          <article class="card">
+            <div class="icon">🔒</div>
+            <h3>Seguridad garantizada</h3>
+            <p>Transacciones protegidas con cifrado y monitoreo antifraude en tiempo real.</p>
+          </article>
+          <article class="card">
+            <div class="icon">💳</div>
+            <h3>Todos los métodos</h3>
+            <p>Tarjetas, SPEI, efectivo en Oxxo y pagos con QR en comercios físicos.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🚀</div>
+            <h3>Rápido y sencillo</h3>
+            <p>Compra en un clic o escanea y paga. Sin fricción y con confirmación inmediata.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🎁</div>
+            <h3>Mercado Puntos</h3>
+            <p>Gana recompensas y beneficios por cada compra dentro del ecosistema.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CÓMO FUNCIONA -->
+    <section id="como" class="section" style="padding-top:0">
+      <div class="container">
+        <h2>¿Cómo funciona?</h2>
+        <div class="how" aria-label="Pasos">
+          <div class="step">
+            <div class="n">1</div>
+            <h3>Descarga la app</h3>
+            <p>Disponible en iOS y Android. Regístrate con tu correo o número celular.</p>
+          </div>
+          <div class="step">
+            <div class="n">2</div>
+            <h3>Vincula tu pago</h3>
+            <p>Agrega tarjeta, deposita saldo o conecta tu banca para usar SPEI.</p>
+          </div>
+          <div class="step">
+            <div class="n">3</div>
+            <h3>Paga donde quieras</h3>
+            <p>En miles de comercios físicos con QR o en línea en tus tiendas favoritas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section class="section" aria-labelledby="testimonios-title">
+      <div class="container">
+        <h2 id="testimonios-title">Testimonios</h2>
+        <div class="testis">
+          <figure class="quote">
+            <blockquote>Ahora pago hasta en el mercado con QR. Súper fácil y rápido.</blockquote>
+            <figcaption class="user">
+              <div class="avatar" aria-hidden="true"></div>
+              <div>
+                <strong>Ana P.</strong>
+                <div style="color:var(--muted);font-size:.9rem">Compradora frecuente</div>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="quote">
+            <blockquote>Como vendedor recibo los pagos en segundos y veo todo desde la app.</blockquote>
+            <figcaption class="user">
+              <div class="avatar" aria-hidden="true"></div>
+              <div>
+                <strong>Carlos G.</strong>
+                <div style="color:var(--muted);font-size:.9rem">Vendedor PyME</div>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section id="descarga" class="section" style="padding-top:0">
+      <div class="container">
+        <div class="cta" role="region" aria-label="Llamado a la acción final">
+          <div>
+            <h3 style="margin:0 0 6px 0;color:#000">Tu dinero, siempre contigo</h3>
+            <p>Regístrate gratis y comienza a pagar con QR, tarjeta o SPEI desde tu celular.</p>
+          </div>
+          <a class="btn" href="#">Descargar App</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <small>© 2025 Mock académico para fines educativos. Esta página no es el sitio oficial de Mercado Pago.</small>
+    </div>
+  </footer>
+</body>
+</html>
